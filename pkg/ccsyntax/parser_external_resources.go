@@ -39,7 +39,7 @@ func (r *parser) GetExternalResources() ([]*schema.GroupVersionKind, []Result) {
 	}
 
 	// validate the external resources
-	r.walkLcncConfig(fnc)
+	r.walkControllerConfig(fnc)
 	return er.resources, er.result
 }
 

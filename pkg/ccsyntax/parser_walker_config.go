@@ -24,8 +24,8 @@ import (
 )
 
 // cfgPreHookFn processes the for, own, watch generically
-type cfgPreHookFn func(lcncCfg *ctrlcfgv1alpha1.ControllerConfig)
-type cfgPostHookFn func(lcncCfg *ctrlcfgv1alpha1.ControllerConfig)
+type cfgPreHookFn func(ctrlCfg *ctrlcfgv1alpha1.ControllerConfig)
+type cfgPostHookFn func(ctrlCfg *ctrlcfgv1alpha1.ControllerConfig)
 
 // gvkObjectFn processes the for, own, watch per item
 type gvkObjectFn func(oc *OriginContext, v *ctrlcfgv1alpha1.GvkObject) *schema.GroupVersionKind
@@ -39,14 +39,7 @@ type emptyFunctionElementFn func(oc *OriginContext)
 type functionFn func(oc *OriginContext, v *ctrlcfgv1alpha1.Function)
 type functionBlockFn func(oc *OriginContext, v *ctrlcfgv1alpha1.FunctionElement)
 
-//type lcncServicesPreHookFn func(v []ctrlcfgv1.ControllerConfigFunctionsBlock)
-
-//type lcncServicesPostHookFn func(v []LcncFunctionsBlock)
-
 type serviceFn func(oc *OriginContext, v *ctrlcfgv1alpha1.Function)
-
-// lcncServiceFn processes the service in the services section
-//type lcncServiceFn func(o Origin, block bool, idx int, vertexName string, v ctrlcfgv1.ControllerConfigFunction)
 
 type WalkConfig struct {
 	cfgPreHookFn    cfgPreHookFn
@@ -59,12 +52,10 @@ type WalkConfig struct {
 	functionBlockFn        functionBlockFn
 	functionFn             functionFn
 	pipelinePostHookFn     pipelinePostHookFn
-	//lcncServicesPreHookFn   lcncServicesPreHookFn
-	serviceFn serviceFn
-	//lcncServicesPostHookFn  lcncServicesPreHookFn
+	serviceFn              serviceFn
 }
 
-func (r *parser) walkLcncConfig(fnc *WalkConfig) {
+func (r *parser) walkControllerConfig(fnc *WalkConfig) {
 	// process config entry
 	if fnc.cfgPreHookFn != nil {
 		fnc.cfgPreHookFn(r.cCfg)

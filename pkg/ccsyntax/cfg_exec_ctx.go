@@ -21,8 +21,8 @@ import (
 	"sync"
 
 	ctrlcfgv1alpha1 "github.com/fnrunner/fnsyntax/apis/controllerconfig/v1alpha1"
-	"github.com/yndd/lcnc-runtime/pkg/exec/rtdag"
-	"github.com/yndd/lcnc-runtime/pkg/exec/service"
+	"github.com/fnrunner/fnruntime/pkg/exec/rtdag"
+	"github.com/fnrunner/fnruntime/pkg/exec/service"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 )
 

@@ -36,7 +36,7 @@ func (r *parser) init() (ConfigExecutionContext, GlobalVariable, []Result) {
 		functionBlockFn: i.initFunctionBlock,
 	}
 	// walk the config initialaizes the config execution context
-	r.walkLcncConfig(fnc)
+	r.walkControllerConfig(fnc)
 
 	return i.cec, i.gvar, i.result
 

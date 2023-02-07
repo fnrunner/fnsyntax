@@ -20,9 +20,9 @@ import (
 	"fmt"
 	"sync"
 
+	"github.com/fnrunner/fnruntime/pkg/exec/rtdag"
 	ctrlcfgv1alpha1 "github.com/fnrunner/fnsyntax/apis/controllerconfig/v1alpha1"
 	"github.com/fnrunner/fnutils/pkg/meta"
-	"github.com/yndd/lcnc-runtime/pkg/exec/rtdag"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 )
 
@@ -39,7 +39,7 @@ func (r *parser) connect(ceCtx ConfigExecutionContext, gvar GlobalVariable) []Re
 	}
 
 	// walk the config resolve the verteces and create the outputmapping
-	r.walkLcncConfig(fnc)
+	r.walkControllerConfig(fnc)
 	// stop if errors were found
 	return c.result
 }

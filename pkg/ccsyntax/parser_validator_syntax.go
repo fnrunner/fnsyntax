@@ -41,7 +41,7 @@ func (r *parser) ValidateSyntax() []Result {
 	}
 
 	// walk the config to validate the syntax
-	r.walkLcncConfig(fnc)
+	r.walkControllerConfig(fnc)
 	return vs.result
 
 }
@@ -57,11 +57,11 @@ func (r *vs) recordResult(result Result) {
 	r.result = append(r.result, result)
 }
 
-func (r *vs) validatePreHook(lcncCfg *ctrlcfgv1alpha1.ControllerConfig) {
-	if len(lcncCfg.GetFors()) != 1 {
+func (r *vs) validatePreHook(ctrlCfg *ctrlcfgv1alpha1.ControllerConfig) {
+	if len(ctrlCfg.GetFors()) != 1 {
 		r.recordResult(Result{
 			OriginContext: &OriginContext{FOWS: FOWFor},
-			Error:         fmt.Errorf("lcnc config must have just 1 for statement, got: %v", lcncCfg.GetFors()).Error(),
+			Error:         fmt.Errorf("controller config must have just 1 for statement, got: %v", ctrlCfg.GetFors()).Error(),
 		})
 	}
 }

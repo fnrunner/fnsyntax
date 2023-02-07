@@ -36,7 +36,7 @@ func (r *parser) resolve(ceCtx ConfigExecutionContext, gvar GlobalVariable) []Re
 	}
 
 	// walk the config resolve the verteces and create the outputmapping
-	r.walkLcncConfig(fnc)
+	r.walkControllerConfig(fnc)
 	// stop if errors were found
 	return rs.result
 }

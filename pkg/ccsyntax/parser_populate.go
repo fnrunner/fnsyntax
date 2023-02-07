@@ -19,11 +19,11 @@ package ccsyntax
 import (
 	"sync"
 
+	"github.com/fnrunner/fnruntime/pkg/exec/output"
+	"github.com/fnrunner/fnruntime/pkg/exec/rtdag"
 	ctrlcfgv1alpha1 "github.com/fnrunner/fnsyntax/apis/controllerconfig/v1alpha1"
 	"github.com/fnrunner/fnsyntax/pkg/ccsyntax/vardag"
 	"github.com/fnrunner/fnutils/pkg/meta"
-	"github.com/yndd/lcnc-runtime/pkg/exec/output"
-	"github.com/yndd/lcnc-runtime/pkg/exec/rtdag"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 )
 
@@ -42,7 +42,7 @@ func (r *parser) populate(cec ConfigExecutionContext, gvar GlobalVariable) []Res
 
 	// walk the config populate the verteces and create the hierarchical DAG
 	// duplicate entries within a dag are checked
-	r.walkLcncConfig(fnc)
+	r.walkControllerConfig(fnc)
 	// stop if errors were found
 	return p.result
 }

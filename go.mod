@@ -3,6 +3,7 @@ module github.com/fnrunner/fnsyntax
 go 1.19
 
 require (
+	github.com/fnrunner/fnruntime v0.0.0-20230207114219-04b6f51d0aec
 	github.com/fnrunner/fnutils v0.0.0-20230207104757-13f70ba005e9
 	github.com/go-logr/logr v1.2.3
 	k8s.io/apimachinery v0.26.1
@@ -25,8 +26,8 @@ require (
 	github.com/google/gnostic v0.6.9 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
-	github.com/google/uuid v1.1.2 // indirect
-	github.com/imdario/mergo v0.3.6 // indirect
+	github.com/google/uuid v1.3.0 // indirect
+	github.com/imdario/mergo v0.3.12 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
