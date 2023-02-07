@@ -17,8 +17,9 @@ limitations under the License.
 package ccsyntax
 
 import (
-	"github.com/go-logr/logr"
+	fnrunv1alpha1 "github.com/fnrunner/fnruntime/apis/fnrun/v1alpha1"
 	ctrlcfgv1alpha1 "github.com/fnrunner/fnsyntax/apis/controllerconfig/v1alpha1"
+	"github.com/go-logr/logr"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	ctrl "sigs.k8s.io/controller-runtime"
 )
@@ -26,6 +27,7 @@ import (
 type Parser interface {
 	GetExternalResources() ([]*schema.GroupVersionKind, []Result)
 	Parse() (ConfigExecutionContext, []Result)
+	GetImages() []*fnrunv1alpha1.Image
 }
 
 func NewParser(cfg *ctrlcfgv1alpha1.ControllerConfig) (Parser, []Result) {

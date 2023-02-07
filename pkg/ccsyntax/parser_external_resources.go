@@ -36,6 +36,7 @@ func (r *parser) GetExternalResources() ([]*schema.GroupVersionKind, []Result) {
 	fnc := &WalkConfig{
 		gvkObjectFn: er.getGvk,
 		functionFn:  er.getFunctionGvk,
+		serviceFn:   er.getFunctionGvk,
 	}
 
 	// validate the external resources
