@@ -20,9 +20,8 @@ import (
 	"fmt"
 	"sync"
 
-	ctrlcfgv1alpha1 "github.com/fnrunner/fnsyntax/apis/controllerconfig/v1alpha1"
 	"github.com/fnrunner/fnruntime/pkg/exec/rtdag"
-	"github.com/fnrunner/fnruntime/pkg/exec/service"
+	ctrlcfgv1alpha1 "github.com/fnrunner/fnsyntax/apis/controllerconfig/v1alpha1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 )
 
@@ -34,19 +33,19 @@ type ConfigExecutionContext interface {
 	GetDAGCtx(fow FOWS, gvk *schema.GroupVersionKind, op Operation) *RTDAGCtx
 	GetFOW(fow FOWS) map[schema.GroupVersionKind]OperationCtx
 	GetForGVK() *schema.GroupVersionKind
-	AddService(gvk *schema.GroupVersionKind, fn ctrlcfgv1alpha1.Function) error
-	GetServices() service.Services
+	//AddService(gvk *schema.GroupVersionKind, fn ctrlcfgv1alpha1.Function) error
+	//GetServices() service.Services
 	Print()
 }
 
 type cfgExecContext struct {
-	name       string
-	m          sync.RWMutex
-	For        map[schema.GroupVersionKind]OperationCtx
-	own        map[schema.GroupVersionKind]OperationCtx
-	watch      map[schema.GroupVersionKind]OperationCtx
-	serviceIdx int
-	services   map[schema.GroupVersionKind]ServiceCtx
+	name  string
+	m     sync.RWMutex
+	For   map[schema.GroupVersionKind]OperationCtx
+	own   map[schema.GroupVersionKind]OperationCtx
+	watch map[schema.GroupVersionKind]OperationCtx
+	//serviceIdx int
+	//services   map[schema.GroupVersionKind]ServiceCtx
 }
 
 type OperationCtx map[Operation]*RTDAGCtx
@@ -65,12 +64,12 @@ type RTDAGCtx struct {
 
 func NewConfigExecutionContext(n string) ConfigExecutionContext {
 	return &cfgExecContext{
-		name:       n,
-		serviceIdx: 0,
-		For:        make(map[schema.GroupVersionKind]OperationCtx),
-		own:        make(map[schema.GroupVersionKind]OperationCtx),
-		watch:      make(map[schema.GroupVersionKind]OperationCtx),
-		services:   make(map[schema.GroupVersionKind]ServiceCtx),
+		name: n,
+		//serviceIdx: 0,
+		For:   make(map[schema.GroupVersionKind]OperationCtx),
+		own:   make(map[schema.GroupVersionKind]OperationCtx),
+		watch: make(map[schema.GroupVersionKind]OperationCtx),
+		//services:   make(map[schema.GroupVersionKind]ServiceCtx),
 	}
 }
 
@@ -213,6 +212,7 @@ func (r *cfgExecContext) GetForGVK() *schema.GroupVersionKind {
 	return &schema.GroupVersionKind{}
 }
 
+/*
 func (r *cfgExecContext) AddService(gvk *schema.GroupVersionKind, fn ctrlcfgv1alpha1.Function) error {
 	if _, ok := r.services[*gvk]; ok {
 		return fmt.Errorf("duplicate gvk service entry: %s", gvk.String())
@@ -231,6 +231,7 @@ func (r *cfgExecContext) GetServices() service.Services {
 	}
 	return s
 }
+*/
 
 func (r *cfgExecContext) Print() {
 	r.m.RLock()

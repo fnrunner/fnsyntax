@@ -37,7 +37,7 @@ func (r *parser) populate(cec ConfigExecutionContext, gvar GlobalVariable) []Res
 	fnc := &WalkConfig{
 		gvkObjectFn: p.addGvk,
 		functionFn:  p.addFunction,
-		serviceFn:   p.addService,
+		//serviceFn:   p.addService,
 	}
 
 	// walk the config populate the verteces and create the hierarchical DAG
@@ -303,6 +303,7 @@ func (r *populator) addFunction(oc *OriginContext, v *ctrlcfgv1alpha1.Function) 
 	}
 }
 
+/*
 func (r *populator) addService(oc *OriginContext, v *ctrlcfgv1alpha1.Function) {
 	// we can safely consume the output as it was validated before
 	for _, outputCfg := range v.Output {
@@ -316,3 +317,4 @@ func (r *populator) addService(oc *OriginContext, v *ctrlcfgv1alpha1.Function) {
 		r.cec.AddService(gvk, *v)
 	}
 }
+*/

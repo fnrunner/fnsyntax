@@ -28,7 +28,7 @@ type Result struct {
 
 const (
 	ResultListKind       = "FunctionResultList"
-	ResultListGroup      = "lcnc.yndd.io"
+	ResultListGroup      = "fnrun.io"
 	ResultListVersion    = "v1"
 	ResultListAPIVersion = ResultListGroup + "/" + ResultListVersion
 )
