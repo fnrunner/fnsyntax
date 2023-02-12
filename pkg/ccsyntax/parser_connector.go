@@ -151,13 +151,13 @@ func (r *connector) connectRefs(oc *OriginContext, s string) {
 		// should only be used within a jq construct
 		if ref.Kind == RegularReferenceKind && ref.Value[0] != '_' {
 			// get the vertexContext from the function
-			fmt.Printf("oc: %#v, ref: %#v, gvk: %s\n", oc, ref, oc.GVK.String())
+			//fmt.Printf("oc: %#v, ref: %#v, gvk: %s\n", oc, ref, oc.GVK.String())
 			d := r.ceCtx.GetDAG(oc)
 			if d == nil {
 				fmt.Printf("empty dag\n")
 			}
-			fmt.Printf("vertexName: %s\n", oc.VertexName)
-			d.PrintVertices()
+			//fmt.Printf("vertexName: %s\n", oc.VertexName)
+			//d.PrintVertices()
 			vc, ok := d.GetVertex(oc.VertexName).(*rtdag.VertexContext)
 			if !ok {
 				r.recordResult(Result{
@@ -165,10 +165,10 @@ func (r *connector) connectRefs(oc *OriginContext, s string) {
 					Error:         fmt.Errorf("wrong type expect vertexContext: %#v", vc).Error(),
 				})
 			}
-			fmt.Printf("vc: %#v\n", vc)
+			//fmt.Printf("vc: %#v\n", vc)
 			// lookup the localDAG first
 			if oc.LocalVars != nil {
-				fmt.Printf("localVar: %#v\n", oc.LocalVars[ref.Value])
+				//fmt.Printf("localVar: %#v\n", oc.LocalVars[ref.Value])
 				if _, ok := oc.LocalVars[ref.Value]; ok {
 					// add the local Variable to the reference list
 					vc.AddReference(ref.Value)
@@ -191,7 +191,7 @@ func (r *connector) connectRefs(oc *OriginContext, s string) {
 			switch {
 			case varInfo.BlockIndex < oc.BlockIndex:
 				//the reference points to the root DAG, so we need to wire it to the root of the block instead
-				fmt.Printf("connect: %s -> %s, oc: %#v, ref: %#v\n", oc.VertexName, varInfo.VertexName, oc, ref)
+				//fmt.Printf("connect: %s -> %s, oc: %#v, ref: %#v\n", oc.VertexName, varInfo.VertexName, oc, ref)
 				d.Connect(oc.BlockVertexName, oc.VertexName)
 				// connect the block vertex to the original vertex in the root DAG
 				oc := oc.DeepCopy()
