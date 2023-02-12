@@ -49,7 +49,7 @@ type VariableContext struct {
 }
 
 func (r *varDAG) AddVariable(s string, v *VariableContext) error {
-	fmt.Printf("addVariable: %s, variableContext: %v\n", s, *v)
+	//fmt.Printf("addVariable: %s, variableContext: %v\n", s, *v)
 	return r.d.AddVertex(s, v)
 }
 

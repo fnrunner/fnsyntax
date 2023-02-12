@@ -244,7 +244,7 @@ func (r *populator) addFunction(oc *OriginContext, v *ctrlcfgv1alpha1.Function) 
 				Error:         err.Error(),
 			})
 		}
-		r.cec.GetDAG(oc).PrintVertices()
+		//r.cec.GetDAG(oc).PrintVertices()
 		return
 	}
 	// This is a block

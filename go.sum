@@ -83,6 +83,8 @@ github.com/fnrunner/fnruntime v0.0.0-20230207114219-04b6f51d0aec h1:9/F3wt7MO71w
 github.com/fnrunner/fnruntime v0.0.0-20230207114219-04b6f51d0aec/go.mod h1:UASVeq2umN2DClej9aQD6idu3cickXPbo4pamCp0XnY=
 github.com/fnrunner/fnutils v0.0.0-20230207104757-13f70ba005e9 h1:kELDm2yl2lAF6/R7O8pSpGekg3lZNSUfTFoDEQUD510=
 github.com/fnrunner/fnutils v0.0.0-20230207104757-13f70ba005e9/go.mod h1:0jc1s0v/fSaPMucEsSKFLhy5a05V/QDMm9tpXzNSz5I=
+github.com/fnrunner/fnutils v0.0.0-20230208075728-372069e01f6b h1:Vj8PMVJ9enQYaJDTs3cD9Gv6876vrDfsIcPFLfSjHig=
+github.com/fnrunner/fnutils v0.0.0-20230208075728-372069e01f6b/go.mod h1:ea2/0+Dk+IU7JDUfLx6tbezonEn+c2DRS9GsGdkvBSs=
 github.com/fsnotify/fsnotify v1.6.0 h1:n+5WquG0fcWoWp6xPWfHdbskMCQaFnG6PfBrh1Ky4HY=
 github.com/fsnotify/fsnotify v1.6.0/go.mod h1:sl3t1tCWJFWoRz9R8WJCbQihKKwmorjAbSClcnxKAGw=
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=

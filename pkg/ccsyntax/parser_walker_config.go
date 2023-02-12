@@ -17,8 +17,6 @@ limitations under the License.
 package ccsyntax
 
 import (
-	"fmt"
-
 	ctrlcfgv1alpha1 "github.com/fnrunner/fnsyntax/apis/controllerconfig/v1alpha1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 )
@@ -85,7 +83,7 @@ func (r *parser) walkControllerConfig(fnc *WalkConfig) {
 	}
 
 	if fnc.serviceFn != nil {
-		fmt.Printf("services: %v\n", r.cCfg.GetServices())
+		//fmt.Printf("services: %v\n", r.cCfg.GetServices())
 		for vertexName, fn := range r.cCfg.GetServices() {
 			oc := &OriginContext{FOWS: FOWService, RootVertexName: vertexName, Origin: OriginService, VertexName: vertexName}
 			fnc.serviceFn(oc, fn)
@@ -221,7 +219,7 @@ func (fnc *WalkConfig) walkFunctionElement(oc *OriginContext, v *ctrlcfgv1alpha1
 		}
 	} else {
 		if fnc.functionFn != nil {
-			fmt.Printf("oc function: %v\n", oc)
+			//fmt.Printf("oc function: %v\n", oc)
 			fnc.functionFn(oc, &v.Function)
 		}
 	}

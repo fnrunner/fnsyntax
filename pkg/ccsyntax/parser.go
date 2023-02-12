@@ -81,7 +81,7 @@ func (r *parser) Parse() (ConfigExecutionContext, []Result) {
 	// techniques
 	r.transitivereduction(ceCtx)
 
-	ceCtx.Print()
+	//ceCtx.Print()
 	return ceCtx, nil
 }
 

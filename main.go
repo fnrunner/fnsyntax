@@ -10,7 +10,8 @@ import (
 	"sigs.k8s.io/yaml"
 )
 
-const yamlFile = "./examples/upf.yaml"
+//const yamlFile = "./examples/upf.yaml"
+const yamlFile = "./examples/topo4.yaml"
 
 func main() {
 	ctrl.SetLogger(zap.New())

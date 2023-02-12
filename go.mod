@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/fnrunner/fnruntime v0.0.0-20230207114219-04b6f51d0aec
-	github.com/fnrunner/fnutils v0.0.0-20230207104757-13f70ba005e9
+	github.com/fnrunner/fnutils v0.0.0-20230208075728-372069e01f6b
 	github.com/go-logr/logr v1.2.3
 	k8s.io/apimachinery v0.26.1
 	sigs.k8s.io/controller-runtime v0.14.4
