@@ -57,7 +57,7 @@ func (r *vs) recordResult(result Result) {
 	r.result = append(r.result, result)
 }
 
-func (r *vs) validatePreHook(ctrlCfg *ctrlcfgv1alpha1.ControllerConfig) {
+func (r *vs) validatePreHook(ctrlCfg *ctrlcfgv1alpha1.ControllerConfigSpec) {
 	if len(ctrlCfg.GetFors()) != 1 {
 		r.recordResult(Result{
 			OriginContext: &OriginContext{FOWS: FOWFor},

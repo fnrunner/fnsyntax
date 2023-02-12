@@ -22,8 +22,8 @@ import (
 )
 
 // cfgPreHookFn processes the for, own, watch generically
-type cfgPreHookFn func(ctrlCfg *ctrlcfgv1alpha1.ControllerConfig)
-type cfgPostHookFn func(ctrlCfg *ctrlcfgv1alpha1.ControllerConfig)
+type cfgPreHookFn func(ctrlCfg *ctrlcfgv1alpha1.ControllerConfigSpec)
+type cfgPostHookFn func(ctrlCfg *ctrlcfgv1alpha1.ControllerConfigSpec)
 
 // gvkObjectFn processes the for, own, watch per item
 type gvkObjectFn func(oc *OriginContext, v *ctrlcfgv1alpha1.GvkObject) *schema.GroupVersionKind

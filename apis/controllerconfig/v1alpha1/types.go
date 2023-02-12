@@ -21,13 +21,6 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
-type ControllerConfig struct {
-	metav1.TypeMeta   `json:",inline" yaml:",inline"`
-	metav1.ObjectMeta `json:"metadata,omitempty" yaml:"metadata,omitempty"`
-
-	Spec ControllerConfigSpec `json:"spec,omitempty" yaml:"spec,omitempty"`
-}
-
 type ControllerConfigSpec struct {
 	// key represents the variable
 	For map[string]*GvkObject `json:"for" yaml:"for"`

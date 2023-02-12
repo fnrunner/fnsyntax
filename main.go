@@ -24,7 +24,7 @@ func main() {
 	}
 	l.Info("read file")
 
-	ctrlcfg := &ctrlcfgv1alpha1.ControllerConfig{}
+	ctrlcfg := &ctrlcfgv1alpha1.ControllerConfigSpec{}
 	if err := yaml.Unmarshal(fb, ctrlcfg); err != nil {
 		l.Error(err, "cannot unmarshal")
 		os.Exit(1)

@@ -30,7 +30,7 @@ type Parser interface {
 	GetImages() []*fnrunv1alpha1.Image
 }
 
-func NewParser(cfg *ctrlcfgv1alpha1.ControllerConfig) (Parser, []Result) {
+func NewParser(cfg *ctrlcfgv1alpha1.ControllerConfigSpec) (Parser, []Result) {
 	p := &parser{
 		cCfg: cfg,
 		//d:       dag.NewDAG(),
@@ -45,7 +45,7 @@ func NewParser(cfg *ctrlcfgv1alpha1.ControllerConfig) (Parser, []Result) {
 }
 
 type parser struct {
-	cCfg           *ctrlcfgv1alpha1.ControllerConfig
+	cCfg           *ctrlcfgv1alpha1.ControllerConfigSpec
 	rootVertexName string
 	l              logr.Logger
 }

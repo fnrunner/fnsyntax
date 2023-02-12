@@ -21,28 +21,28 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
 )
 
-func (r *ControllerConfig) GetFors() map[string]*GvkObject {
-	return r.Spec.For
+func (r *ControllerConfigSpec) GetFors() map[string]*GvkObject {
+	return r.For
 }
 
-func (r *ControllerConfig) GetOwns() map[string]*GvkObject {
-	return r.Spec.Own
+func (r *ControllerConfigSpec) GetOwns() map[string]*GvkObject {
+	return r.Own
 }
 
-func (r *ControllerConfig) GetWatches() map[string]*GvkObject {
-	return r.Spec.Watch
+func (r *ControllerConfigSpec) GetWatches() map[string]*GvkObject {
+	return r.Watch
 }
 
 // this function is assumed to be executed after validation
 // validate check if the for is present
-func (r *ControllerConfig) GetRootVertexName() string {
-	for vertexName := range r.Spec.For {
+func (r *ControllerConfigSpec) GetRootVertexName() string {
+	for vertexName := range r.For {
 		return vertexName
 	}
 	return ""
 }
 
-func (r *ControllerConfig) GetForGvk() ([]*schema.GroupVersionKind, error) {
+func (r *ControllerConfigSpec) GetForGvk() ([]*schema.GroupVersionKind, error) {
 	gvks, err := r.getGvkList(r.GetFors())
 	if err != nil {
 		return nil, err
@@ -51,7 +51,7 @@ func (r *ControllerConfig) GetForGvk() ([]*schema.GroupVersionKind, error) {
 	return gvks, nil
 }
 
-func (r *ControllerConfig) GetOwnGvks() ([]*schema.GroupVersionKind, error) {
+func (r *ControllerConfigSpec) GetOwnGvks() ([]*schema.GroupVersionKind, error) {
 	gvks, err := r.getGvkList(r.GetOwns())
 	if err != nil {
 		return nil, err
@@ -59,7 +59,7 @@ func (r *ControllerConfig) GetOwnGvks() ([]*schema.GroupVersionKind, error) {
 	return gvks, nil
 }
 
-func (r *ControllerConfig) GetWatchGvks() ([]*schema.GroupVersionKind, error) {
+func (r *ControllerConfigSpec) GetWatchGvks() ([]*schema.GroupVersionKind, error) {
 	gvks, err := r.getGvkList(r.GetWatches())
 	if err != nil {
 		return nil, err
@@ -67,7 +67,7 @@ func (r *ControllerConfig) GetWatchGvks() ([]*schema.GroupVersionKind, error) {
 	return gvks, nil
 }
 
-func (r *ControllerConfig) getGvkList(gvrObjs map[string]*GvkObject) ([]*schema.GroupVersionKind, error) {
+func (r *ControllerConfigSpec) getGvkList(gvrObjs map[string]*GvkObject) ([]*schema.GroupVersionKind, error) {
 	gvks := make([]*schema.GroupVersionKind, 0, len(gvrObjs))
 	for _, gvrObj := range gvrObjs {
 		gvk, err := meta.GetGVKFromRuntimeRawExtension(gvrObj.Resource)
@@ -79,16 +79,16 @@ func (r *ControllerConfig) getGvkList(gvrObjs map[string]*GvkObject) ([]*schema.
 	return gvks, nil
 }
 
-func (r *ControllerConfig) GetServices() map[string]*Function {
-	return r.Spec.Services
+func (r *ControllerConfigSpec) GetServices() map[string]*Function {
+	return r.Services
 }
 
-func (r *ControllerConfig) GetPipelines() []*Pipeline {
-	return r.Spec.Pipelines
+func (r *ControllerConfigSpec) GetPipelines() []*Pipeline {
+	return r.Pipelines
 }
 
-func (r *ControllerConfig) GetPipeline(s string) *Pipeline {
-	for _, pipeline := range r.Spec.Pipelines {
+func (r *ControllerConfigSpec) GetPipeline(s string) *Pipeline {
+	for _, pipeline := range r.GetPipelines() {
 		if pipeline.Name == s {
 			return pipeline
 		}
