@@ -27,8 +27,8 @@ import (
 
 func (r *parser) init() (ConfigExecutionContext, GlobalVariable, []Result) {
 	i := initializer{
-		cec:  NewConfigExecutionContext("controller-config"),
-		gvar: NewGlobalVariable("controller-config"),
+		cec:  NewConfigExecutionContext(r.controllerName),
+		gvar: NewGlobalVariable(r.controllerName),
 	}
 
 	fnc := &WalkConfig{

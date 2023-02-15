@@ -10,7 +10,7 @@ import (
 	"sigs.k8s.io/yaml"
 )
 
-//const yamlFile = "./examples/upf.yaml"
+// const yamlFile = "./examples/upf.yaml"
 const yamlFile = "./examples/topo4.yaml"
 
 func main() {
@@ -31,7 +31,7 @@ func main() {
 	}
 	l.Info("unmarshal succeeded")
 
-	p, result := ccsyntax.NewParser(ctrlcfg)
+	p, result := ccsyntax.NewParser("ctrlName", ctrlcfg)
 	if len(result) > 0 {
 		l.Error(err, "ccsyntax validation failed", "result", result)
 		os.Exit(1)
